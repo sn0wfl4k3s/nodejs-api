@@ -1,0 +1,25 @@
+{
+  "name": "sqlnode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "prerun": "yarn sequelize-cli db:migrate && yarn swagger-autogen",
+    "dev": "yarn prerun && nodemon src/index.js",
+    "start": "yarn prerun && node src/index.js",
+    "swagger-autogen": "node src/swagger.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^7.0.0-alpha.2",
+    "sequelize-cli": "^6.3.0",
+    "swagger-autogen": "^2.18.0",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

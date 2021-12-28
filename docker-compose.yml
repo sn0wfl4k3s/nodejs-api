@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: "crud-api"
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./:/usr/app
+    depends_on:
+      - postdb
+    networks:
+      - backend
+  
+  postdb:
+    image: postgres:14.1-alpine
+    container_name: "postdb"
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+      - "~/.docker-volumes/sqlnode/:/var/lib/postgresql/data/"
+    networks:
+      - backend
+
+  adminer:
+    image: adminer
+    container_name: "adminer"
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postdb
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge

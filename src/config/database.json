@@ -1,0 +1,23 @@
+{
+  "development": {
+    "host": "postdb",
+    "username": "docker",
+    "password": "docker",
+    "database": "sqlnode",
+    "dialect": "postgres"
+  },
+  "test": {
+    "host": "postdb",
+    "username": "docker",
+    "password": "docker",
+    "database": "sqlnode",
+    "dialect": "postgres"
+  },
+  "production": {
+    "host": "postdb",
+    "username": "docker",
+    "password": "docker",
+    "database": "sqlnode",
+    "dialect": "postgres"
+  }
+}
